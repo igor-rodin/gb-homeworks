@@ -7,13 +7,18 @@ int secondNumber = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine($"a = {firstNumber}");
 Console.WriteLine($"b = {secondNumber}");
 
+int maxNumber = firstNumber;
+int minNumber = firstNumber;
+
 if (firstNumber > secondNumber)
 {
-  Console.WriteLine($"Max = {firstNumber}");
+  minNumber = secondNumber;
 }
 else
 {
-  Console.WriteLine($"Max = {secondNumber}");
+  maxNumber = secondNumber;
 }
+Console.WriteLine($"Максимальное число -> {maxNumber}");
+Console.WriteLine($"Минимальное число -> {minNumber}");
 
 
