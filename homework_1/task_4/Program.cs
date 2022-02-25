@@ -13,12 +13,12 @@ Console.WriteLine($"c = {thirdNumber}");
 
 int maxNumber = firstNumber;
 
-if (secondNumber > firstNumber)
+if (secondNumber > maxNumber)
 {
   maxNumber = secondNumber;
 }
 
-if (thirdNumber > firstNumber)
+if (thirdNumber > maxNumber)
 {
   maxNumber = thirdNumber;
 }
