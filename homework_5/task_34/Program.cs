@@ -1,14 +1,15 @@
 ﻿// Задача 34. Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве
 using System.Text;
 
-int[] Create3DigitNumbersArray(int Size)
+//Создание массива целых чисел в диапазоне от MinValue до MaxValue
+int[] CreateIntArray(int Size, int MinValue = 100, int MaxValue = 1000)
 {
   int[] Result = new int[Size];
 
   Random genInt = new Random();
   for (int i = 0; i < Size; i++)
   {
-    Result[i] = genInt.Next(100, 1000);
+    Result[i] = genInt.Next(MinValue, MaxValue);
   }
 
   return Result;
@@ -44,6 +45,6 @@ int EvensCount(int[] Array)
 
 Console.Write("Введите размер массива: ");
 int ArrSize = Convert.ToInt32(Console.ReadLine());
-int[] Array = Create3DigitNumbersArray(ArrSize);
+int[] Array = CreateIntArray(ArrSize);
 PrintArray(Array);
 Console.WriteLine($"Количество четных элементов в массиве: {EvensCount(Array)}");
