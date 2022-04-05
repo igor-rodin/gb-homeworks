@@ -46,7 +46,7 @@ void PrintTwoDimensionalArray(int[,] array)
 /// Метод находит в прямоугольном массиве строку с минимальной суммой элементов
 /// </summary>
 /// <param name="array">Массив</param>
-/// <returns>Кортеж, состоящий из индекса найденной строки и суммы элементов этой строки</returns>
+/// <returns>Кортеж, состоящий из индекса row найденной строки и суммы элементов sum этой строки</returns>
 (int row, int sum) GetRowWithMinSum(int[,] array)
 {
   int minSum = int.MaxValue;
