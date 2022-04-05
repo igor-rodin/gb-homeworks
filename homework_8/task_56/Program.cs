@@ -1,5 +1,5 @@
-﻿//Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит 
-//           по убыванию элементы каждой строки двумерного массива(в пределах всего массива).
+﻿// Задача 56: Задайте прямоугольный двумерный массив. 
+//            Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 
 /// <summary>
 /// Метод генерирует двумерный массив, заполненный случайными целыми числами
@@ -43,31 +43,30 @@ void PrintTwoDimensionalArray(int[,] array)
 }
 
 /// <summary>
-/// Метод сортирует элементы каждой строки массива array в порядке убывания
+/// Метод находит в прямоугольном массиве строку с минимальной суммой элементов
 /// </summary>
-/// <param name="array">Сортируемый массив</param>
-void SortArrowsByDesc(int[,] array)
+/// <param name="array">Массив</param>
+/// <returns>Кортеж, состоящий из индекса найденной строки и суммы элементов этой строки</returns>
+(int row, int sum) GetRowWithMinSum(int[,] array)
 {
+  int minSum = int.MaxValue;
+  int minIndex = 0;
+
   for (int i = 0; i < array.GetLength(0); i++)
   {
+    int rowSum = 0;
     for (int j = 0; j < array.GetLength(1); j++)
     {
-      int maxIndex = j;
-      for (int k = j + 1; k < array.GetLength(1); k++)
-      {
-        if (array[i, k] > array[i, maxIndex])
-        {
-          maxIndex = k;
-        }
-      }
-      if (maxIndex != j)
-      {
-        int tmp = array[i, j];
-        array[i, j] = array[i, maxIndex];
-        array[i, maxIndex] = tmp;
-      }
+      rowSum += array[i, j];
+    }
+    if (rowSum < minSum)
+    {
+      minSum = rowSum;
+      minIndex = i;
     }
   }
+
+  return (minIndex, minSum);
 }
 //--------------------------------------------------------------------------
 Console.WriteLine("Введите размер массива (m n): ");
@@ -77,6 +76,5 @@ int n = Convert.ToInt32(sizeArray[1]);
 
 int[,] array = CreateTwoDimensionalArray(m, n);
 PrintTwoDimensionalArray(array);
-SortArrowsByDesc(array);
-Console.WriteLine();
-PrintTwoDimensionalArray(array);
+(int row, int rowSum) = GetRowWithMinSum(array);
+Console.WriteLine($"Индекс строки с минимальной суммой -{row,3} (сумма: {rowSum,3})");
