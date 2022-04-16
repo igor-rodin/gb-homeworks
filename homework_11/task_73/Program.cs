@@ -2,23 +2,7 @@
 //            так, чтобы в одной группе все числа были взаимно просты (все числа в группе не делятся друг на друга)?
 //            Найдите M при заданном N и получите одно из разбиений на группы (N <= 10^20). 
 
-using System.Text;
 
-
-//------------------------------------------------------
-void PrintArray(int[] Array)
-{
-  String separator = ", ";
-  StringBuilder stringBuilder = new StringBuilder("{");
-  for (int i = 1; i < Array.Length - 1; i++)
-  {
-    stringBuilder.Append(Array[i]).Append(separator);
-  }
-  stringBuilder.Append(Array[Array.Length - 1]).Append("}");
-
-  Console.WriteLine(stringBuilder.ToString());
-}
-//--------------------------------------------------------
 void PrintGroups(int[] numbers, int groupsCount)
 {
   for (int i = 0; i < groupsCount; i++)
@@ -103,5 +87,6 @@ for (int i = 2; i < N + 1; i++)
 GetPrimes(numbers, ref groupCount);
 
 Console.WriteLine($"Количество групп: {groupCount}");
+//M = log2(N) (логарифм N по основанию 2, округленный до целого сверху)
 
 PrintGroups(numbers, groupCount);
